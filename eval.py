@@ -6,14 +6,9 @@ import pytorch_mask_rcnn as pmr
     
 def main(args):
     device = torch.device("cuda" if torch.cuda.is_available() and args.useCuda else "cpu")
-
-    print(args.dataset)
-    print(args.dataDir)
     
     d_test = pmr.datasets(args.dataset, args.dataDir, "val", train=True) # set train=True for eval
 
-    print(args)
-    print(d_test)
     num_classes = len(d_test.classes) + 1
     model = pmr.maskrcnn_resnet50(False, num_classes).to(device)
     
