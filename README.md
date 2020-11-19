@@ -4,9 +4,13 @@ Mask RCNN with pytorch and pascal2012 dataset
 
 ## tested env
 ubuntu18.04
+
 CUDA Version: 10.2
+
 Driver Version: 440.100
+
 GeForce RTX 2060
+
 pytorch 1.5
 
 
