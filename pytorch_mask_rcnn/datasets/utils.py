@@ -1,5 +1,4 @@
 from .voc_dataset import VOCDataset
-from .coco_dataset import COCODataset
 
 __all__ = ["datasets", "collate_wrapper"]
 
@@ -9,8 +8,6 @@ def datasets(ds, *args, **kwargs):
     choice = ["voc", "coco"]
     if ds == choice[0]:
         return VOCDataset(*args, **kwargs)
-    if ds == choice[1]:
-        return COCODataset(*args, **kwargs)
     else:
         raise ValueError("'ds' must be in '{}', but got '{}'".format(choice, ds))
     
