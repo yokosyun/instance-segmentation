@@ -39,7 +39,7 @@ def main(args):
         A = time.time()
         pmr.train_one_epoch(model, optimizer, d_train, device, epoch, args)
         A = time.time() - A
-        torch.save(model.state_dict(),  "best.pth")
+        torch.save(model.state_dict(),  "result/best.pth")
     
     
 if __name__ == "__main__":

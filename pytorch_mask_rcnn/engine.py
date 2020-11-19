@@ -2,7 +2,6 @@ import time
 from pytorch_mask_rcnn.visualize import *
 import torch
 import sys
-from .utils import Meter, TextArea
 try:
     from .datasets import CocoEvaluator, prepare_for_coco
 except:
