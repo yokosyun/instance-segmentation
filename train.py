@@ -9,14 +9,13 @@ import pytorch_mask_rcnn as pmr
 def main(args):
     device = torch.device("cuda" if torch.cuda.is_available() and args.useCuda else "cpu")
         
-    # ---------------------- prepare data loader ------------------------------- #
     
     dataset_train = pmr.datasets(args.dataset, args.dataDir, "train", train=True)
     indices = torch.randperm(len(dataset_train)).tolist()
     d_train = torch.utils.data.Subset(dataset_train, indices)
     d_test = pmr.datasets(args.dataset, args.dataDir, "val", train=True) # set train=True for eval
     
-    # -------------------------------------------------------------------------- #
+
 
     print(args)
     num_classes = len(d_train.dataset.classes) + 1 # including background class
@@ -33,7 +32,7 @@ def main(args):
     since = time.time()
     print("\nalready trained: {} epochs; to {} epochs".format(start_epoch, args.epochs))
     
-    # ------------------------------- train ------------------------------------ #
+
         
     for epoch in range(start_epoch, args.epochs):
         print("\nepoch: {}".format(epoch + 1))
@@ -41,13 +40,6 @@ def main(args):
         pmr.train_one_epoch(model, optimizer, d_train, device, epoch, args)
         A = time.time() - A
         torch.save(model.state_dict(),  "best.pth")
-
-      
-    # -------------------------------------------------------------------------- #
-
-    print("\ntotal time of this training: {:.2f} s".format(time.time() - since))
-    if start_epoch < args.epochs:
-        print("already trained: {} epochs\n".format(trained_epoch))
     
     
 if __name__ == "__main__":
@@ -61,6 +53,5 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=100)
     parser.add_argument("--iters", type=int, default=200, help="max iters per epoch, -1 denotes auto")
     args = parser.parse_args()
-    print(args.lr)
 
     main(args)
