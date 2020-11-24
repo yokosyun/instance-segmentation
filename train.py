@@ -1,7 +1,7 @@
-import bisect
-import glob
+# import bisect
+# import glob
 import os
-import re
+# import re
 import time
 import torch
 import pytorch_mask_rcnn as pmr
@@ -46,8 +46,8 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--useCuda", action="store_true")
-    parser.add_argument("--dataset", default="coco", help="coco or voc")
-    parser.add_argument("--dataDir", default="/data/coco2017")
+    parser.add_argument("--dataset", default="vox", help="voc")
+    parser.add_argument("--dataDir", default="/data/pascal2012")
     parser.add_argument("--chptPath", type=str)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--epochs", type=int, default=100)

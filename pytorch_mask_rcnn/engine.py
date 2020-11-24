@@ -2,10 +2,7 @@ import time
 from pytorch_mask_rcnn.visualize import *
 import torch
 import sys
-try:
-    from .datasets import CocoEvaluator, prepare_for_coco
-except:
-    pass
+
 
 
 def train_one_epoch(model, optimizer, data_loader, device, epoch, args):

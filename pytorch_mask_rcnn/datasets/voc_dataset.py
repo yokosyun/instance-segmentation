@@ -19,39 +19,7 @@ VOC_CLASSES = (
     "sheep", "sofa", "train", "tvmonitor"
 )
 
-def target_to_coco_ann(target):
-    image_id = target['image_id'].item()
-    boxes = target['boxes']
-    masks = target['masks']
-    labels = target['labels'].tolist()
 
-    xmin, ymin, xmax, ymax = boxes.unbind(1)
-    boxes = torch.stack((xmin, ymin, xmax - xmin, ymax - ymin), dim=1)
-    area = boxes[:, 2] * boxes[:, 3]
-    area = area.tolist()
-    boxes = boxes.tolist()
-    
-    rles = [
-        mask_util.encode(np.array(mask[:, :, None], dtype=np.uint8, order='F'))[0]
-        for mask in masks
-    ]
-    for rle in rles:
-        rle['counts'] = rle['counts'].decode('utf-8')
-
-    anns = []
-    for i, rle in enumerate(rles):
-        anns.append(
-            {
-                'image_id': image_id,
-                'id': i,
-                'category_id': labels[i],
-                'segmentation': rle,
-                'bbox': boxes[i],
-                'area': area[i],
-                'iscrowd': 0,
-            }
-        )
-    return anns     
 
 
 class VOCDataset(GeneralizedDataset):

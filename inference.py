@@ -41,8 +41,8 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--useCuda", action="store_true")
-    parser.add_argument("--dataset", default="coco", help="coco or voc")
-    parser.add_argument("--dataDir", default="/data/coco2017")
+    parser.add_argument("--dataset", default="voc", help="voc")
+    parser.add_argument("--dataDir", default="/data/pascal2012")
     parser.add_argument("--chptPath", type=str)
     args = parser.parse_args()
 

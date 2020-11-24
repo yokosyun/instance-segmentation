@@ -149,7 +149,6 @@ class MaskRCNN(nn.Module):
         result, roi_losses = self.head(feature, proposal, image_shape, target)
         
         if self.training:
-            # return dict(**rpn_losses, **roi_losses)
             return dict(**rpn_losses, **roi_losses)
         else:
             result = self.transformer.postprocess(result, image_shape, ori_image_shape)
@@ -236,12 +235,10 @@ def maskrcnn_resnet50(pretrained, num_classes, pretrained_backbone=True):
     Constructs a Mask R-CNN model with a ResNet-50 backbone.
     
     Arguments:
-        pretrained (bool): If True, returns a model pre-trained on COCO train2017.
+        pretrained (bool): If True, returns a model pre-trained.
         num_classes (int): number of classes (including the background).
     """
-    
-    if pretrained:
-        backbone_pretrained = False
+
         
     backbone = ResBackbone('resnet50', pretrained_backbone)
     model = MaskRCNN(backbone, num_classes)
