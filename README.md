@@ -2,6 +2,10 @@
 
 Mask RCNN with pytorch and pascal2012 dataset
 
+## result
+
+https://github.com/yokosyun/instance-segmentation/blob/addImage/doc/maskrcnn.png
+
 ## tested env
 ubuntu18.04
 
