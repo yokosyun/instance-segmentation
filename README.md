@@ -6,6 +6,8 @@ Mask RCNN with pytorch and pascal2012 dataset
 
 ![example](https://github.com/yokosyun/instance-segmentation/blob/addImage/doc/maskrcnn.png)
 
+*you need to train longer to get better result
+
 ## tested env
 ubuntu18.04
 
@@ -41,10 +43,6 @@ sh inference.sh
 ```
 
 Note: This is a simple model and only supports ```batch_size = 1```. 
-
-
-
-![example](https://github.com/Okery/PyTorch-Simple-MaskRCNN/blob/master/image/001.png)
 
 
 ## reference
